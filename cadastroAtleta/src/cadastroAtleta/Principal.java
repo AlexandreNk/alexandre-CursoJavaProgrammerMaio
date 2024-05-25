@@ -11,6 +11,14 @@ public class Principal {
 		
 		Atleta atleta = new Atleta();
 		
+		System.out.println("O nome encapsulado é " + atleta.getNome());
+		
+		System.out.println("Digite a idade");
+		
+		int idadeVar = Integer.parseInt(entradaDeDados.next());
+		
+		atleta.setIdade(idadeVar);
+		
 	}
 
 }
