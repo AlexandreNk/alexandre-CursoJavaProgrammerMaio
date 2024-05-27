@@ -51,7 +51,7 @@ public class Principal{
 		System.out.println("Nome do Animal:" + animal.getNome());
 		System.out.println("Idade do Animal:" + animal.getIdade());
 		System.out.println("Peso do Animal:" + animal.getPeso());
-		System.out.println("Preco do Animal:" + preco);
+		System.out.println("Preco do Animal:" + calcularPreco(animal.getPeso()));
 		
 	}
 	
