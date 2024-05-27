@@ -35,25 +35,25 @@ public class Principal{
 			//System.out.println("Peso");
 			//objetoAnimal.peso = Integer.parseInt(entradaDados.next());
 			
-			//objetoAnimal.preco = calcularPreco(objetoAnimal.peso);
+			double preco = calcularPreco(pesoVar);
 			
-			//imprimirResultadoNoConsole(objetoAnimal);
+			imprimirResultadoNoConsole(animal);
 			
-			System.out.println("O nome encapsulado é "
-			+ animal.getNome()  + "A idade é "
-			+ animal.getIdade() + "O peso é "
-			+ animal.getPeso());
+//			System.out.println("O nome encapsulado é "
+//			+ animal.getNome()  + "A idade é "
+//			+ animal.getIdade() + "O peso é "
+//			+ animal.getPeso());
 			
 	}
 	
-//	public static void imprimirResultadoNoConsole(Animal animal) {
+	public static void imprimirResultadoNoConsole(Animal animal) {
 		
-//		System.out.println("Nome do Animal:" + animal.nome);
-//		System.out.println("Idade do Animal:" + animal.idade);
-//		System.out.println("Peso do Animal:" + animal.peso);
-//		System.out.println("Preco do Animal:" + animal.preco);
+		System.out.println("Nome do Animal:" + animal.getNome());
+		System.out.println("Idade do Animal:" + animal.getIdade());
+		System.out.println("Peso do Animal:" + animal.getPeso());
+		System.out.println("Preco do Animal:" + preco);
 		
-//	}
+	}
 	
 	public static double calcularPreco(int peso) {
 		

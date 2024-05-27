@@ -5,7 +5,7 @@ public class Animal{
 		private String nome;
 		private int idade;
 		private int peso;
-		private double preco;
+		//private double preco;
 		
 		public String getNome() {
 			return nome;
@@ -25,13 +25,13 @@ public class Animal{
 		public void setPeso(int peso) {
 			this.peso = peso;
 		}
-		public double getPreco() {
-			return preco;
-		}
-		public void setPreco(double preco) {
-			this.preco = preco;
-		}
-		
+//		public double getPreco() {
+//			return preco;
+//		}
+//		public void setPreco(double preco) {
+//			this.preco = preco;
+//		}
+//		
 //		public Animal() {
 //			super();
 //			this.nome = nome;
