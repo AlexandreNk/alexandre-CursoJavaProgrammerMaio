@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controlador.TelaMenuInicialControlador;
+
 public class TelaMenuInicial {
 
 	public void chamarTelaMenuIniciar() {
@@ -30,6 +32,9 @@ public class TelaMenuInicial {
 		
 		frameTelaMenuInicial.add(panelTelaInicial);
 		frameTelaMenuInicial.setVisible(true);
+		
+		TelaMenuInicialControlador telaMenuInicialControlador = new TelaMenuInicialControlador(opcaoTexto);
+		botaoEnviar.addActionListener(telaMenuInicialControlador);
 		
 	}
 	

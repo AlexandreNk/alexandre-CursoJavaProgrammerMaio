@@ -1,0 +1,3 @@
+O nome do cachorro é: Mag
+O CAF do cachorro é: 654321
+A cor do pelo é: Branca
