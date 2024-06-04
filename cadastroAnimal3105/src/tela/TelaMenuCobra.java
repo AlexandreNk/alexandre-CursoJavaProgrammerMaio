@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controlador.TelaMenuCobraControlador;
+
 public class TelaMenuCobra {
 	
 	public void chamarTelaMenuCobra() {
@@ -16,10 +18,10 @@ public class TelaMenuCobra {
 		
 		JPanel panelTelaCobra = new JPanel();
 		
-		JLabel labelOpcaoCadastrarCobra = new JLabel(" 1 - Cadastrar Cobra ");
+		JLabel labelOpcaoCadastrarCobra = new JLabel(" G1 - Cadastrar Cobra ");
 		panelTelaCobra.add(labelOpcaoCadastrarCobra);
 		
-		JLabel labelOpcaoListarCobra = new JLabel(" 2 - Listar Cobra ");
+		JLabel labelOpcaoListarCobra = new JLabel(" G2 - Listar Cobra ");
 		panelTelaCobra.add(labelOpcaoListarCobra);
 		
 		JTextField opcaoTexto = new JTextField(10);
@@ -30,7 +32,10 @@ public class TelaMenuCobra {
 		
 		frameTelaMenuCobra.add(panelTelaCobra);
 		frameTelaMenuCobra.setVisible(true);
-		
+
+		TelaMenuCobraControlador telaMenuCobraControlador = new TelaMenuCobraControlador(opcaoTexto);
+		botaoEnviar.addActionListener(telaMenuCobraControlador);
+
 		
 	}
 }
