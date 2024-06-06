@@ -3,7 +3,7 @@ package banco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConectaBancoTeste {
+public class ConectaBanco {
 
 	private static String USUARIO = "root";
 	private static String SENHA = "root";

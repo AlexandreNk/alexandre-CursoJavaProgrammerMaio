@@ -1,21 +1,24 @@
 package banco;
 
-import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 public class Principal {
 
 	public static void main(String[] args) {
 
-		ConectaBancoTeste conexao = new ConectaBancoTeste();
+		ConectaBanco conexao = new ConectaBanco();
 
-		Connection conexaoRecebida = conexao.criarConexaoComBaseTeste();
-
-		if (conexaoRecebida == null) {
-			System.out.println("Falha! Não posso usar o objeto");
-		} else {
-			System.out.println("Conexao OK");
+		DaoPessoa daoPessoa = new DaoPessoa();
+		
+		boolean resultado = daoPessoa.salvarPessoaNobanco();
+		
+		if(resultado) {
+			JOptionPane.showConfirmDialog(null, "Deu certo");
+		}else {
+			JOptionPane.showConfirmDialog(null, "Deu errado");
 		}
-
+				
+		
 	}
 
 }
