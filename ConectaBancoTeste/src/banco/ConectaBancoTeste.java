@@ -21,5 +21,6 @@ public class ConectaBancoTeste {
 			System.out.println(e.getMessage());
 			System.out.println("Deu errado a conexao!!!");
 		}
+		return conexaoBancoDadosTeste;
 	}
 }
