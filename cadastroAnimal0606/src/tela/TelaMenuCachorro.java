@@ -1,12 +1,13 @@
 package tela;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controlador.TelaCadastroCachorroControlador;
 import controlador.TelaMenuCachorroControlador;
 
 public class TelaMenuCachorro {
@@ -14,6 +15,8 @@ public class TelaMenuCachorro {
 	public void chamarTelaMenuCachorro() {
 		
 		JFrame frameTelaMenuCachorro = new JFrame();
+		
+		GridLayout grid = new GridLayout(0,1);
 		
 		frameTelaMenuCachorro.setSize(200,200);
 		
@@ -24,6 +27,7 @@ public class TelaMenuCachorro {
 		
 		JLabel labelOpcaoListarCachorro = new JLabel(" G2 - Listar Cachorro ");
 		panelTelaCachorro.add(labelOpcaoListarCachorro);
+		panelTelaCachorro.setLayout(grid);
 		
 		JTextField opcaoTexto = new JTextField(10);
 		panelTelaCachorro.add(opcaoTexto);
@@ -34,7 +38,7 @@ public class TelaMenuCachorro {
 		frameTelaMenuCachorro.add(panelTelaCachorro);
 		frameTelaMenuCachorro.setVisible(true);
 		
-		TelaMenuCachorroControlador telaMenuCachorroControlador = new TelaMenuCachorroControlador(opcaoTexto);
+		TelaMenuCachorroControlador telaMenuCachorroControlador = new TelaMenuCachorroControlador(opcaoTexto,frameTelaMenuCachorro);
 		botaoEnviar.addActionListener(telaMenuCachorroControlador);
 	}
 }

@@ -2,10 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import entidade.Cobra;
+import persistencia.DaoCobra;
 import tela.TelaCadastroCobra;
 
 public class TelaMenuCobraControlador implements ActionListener {
@@ -13,6 +17,8 @@ public class TelaMenuCobraControlador implements ActionListener {
 	JTextField opcaoRecebida;
 	
 	TelaCadastroCobra cadastroCobra= new TelaCadastroCobra();
+	DaoCobra daoCobra = new DaoCobra();
+	List<Cobra> listCobra = new ArrayList<Cobra>();
 	
 	public TelaMenuCobraControlador(JTextField opcaoRecebida) {
 		this.opcaoRecebida = opcaoRecebida;
@@ -28,7 +34,8 @@ public class TelaMenuCobraControlador implements ActionListener {
 				System.out.println("Direcione para cadastro de cobras");
 				break;
 			}
-			case "G2" : {
+			case "G2" : {	
+				cadastroCobra.imprimirCobra(daoCobra.retornaListaCobra());
 				System.out.println("Direcione para lista de cobras");
 				break;
 			}

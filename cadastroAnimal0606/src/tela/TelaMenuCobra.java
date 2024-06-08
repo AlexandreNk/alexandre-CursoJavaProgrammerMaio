@@ -1,5 +1,7 @@
 package tela;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +16,8 @@ public class TelaMenuCobra {
 		
 		JFrame frameTelaMenuCobra = new JFrame();
 		
+		GridLayout grid = new GridLayout(0,1);
+		
 		frameTelaMenuCobra.setSize(200,200);
 		
 		JPanel panelTelaCobra = new JPanel();
@@ -23,6 +27,7 @@ public class TelaMenuCobra {
 		
 		JLabel labelOpcaoListarCobra = new JLabel(" G2 - Listar Cobra ");
 		panelTelaCobra.add(labelOpcaoListarCobra);
+		panelTelaCobra.setLayout(grid);
 		
 		JTextField opcaoTexto = new JTextField(10);
 		panelTelaCobra.add(opcaoTexto);

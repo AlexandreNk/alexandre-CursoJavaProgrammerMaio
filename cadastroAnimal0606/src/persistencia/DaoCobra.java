@@ -2,6 +2,9 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import entidade.Cobra;
 
@@ -57,6 +60,60 @@ public class DaoCobra {
 
 		return salvamento;
 
+	}
+
+	public List<Cobra> retornaListaCobra() {
+
+		String comandoSqlBuscarCobra = "select * from tb_cobra";
+
+		List<Cobra> listaCobra = new ArrayList<>();
+		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
+
+		Connection connectionBase = null; // Cria o objeto de conexão como null
+		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
+		ResultSet resultadoTabelaCobra = null;
+
+		try {
+			connectionBase = conexaoFabricaConexao.criarConexaoComBase(); // Recebe o objeto de conexão da
+																			// classe Fabrica de conexão
+
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlBuscarCobra);// Armazena a conexão e o
+																						// comando SQL que vai ser
+																						// preparado
+			resultadoTabelaCobra = preparaOcomandoSQL.executeQuery();
+
+			while (resultadoTabelaCobra.next()) {
+				Cobra cobra = new Cobra();
+
+				cobra.setNome(resultadoTabelaCobra.getString("nome"));
+				cobra.setCAF(resultadoTabelaCobra.getString("CAF"));
+				cobra.setTipoVeneno(resultadoTabelaCobra.getString("tipoveneno"));
+
+				listaCobra.add(cobra);
+
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(" Erro na lista de cachorro!!!");
+
+		} finally { // Esse é obrigatorio
+			try {
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
+											// encerrar
+				}
+				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
+					preparaOcomandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return listaCobra;
 	}
 
 }
