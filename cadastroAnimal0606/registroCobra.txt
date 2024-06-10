@@ -1,0 +1,3 @@
+O nome da cobra é: PYTHON
+O CAF da cobra é: 666
+O tipo do veneno é: FATAL

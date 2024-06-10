@@ -14,14 +14,15 @@ import persistencia.DaoCachorro;
 import tela.TelaCadastroCachorro;
 
 public class TelaMenuCachorroControlador implements ActionListener {
-	
+
 	JTextField opcaoRecebida;
 	JFrame frameTelaMenuCachorro;
-	
+
 	TelaCadastroCachorro cadastroCachorro = new TelaCadastroCachorro();
+	TelaListaCachorro telaListaCachorro = new TelaListaCachorro();
+	
 	DaoCachorro daoCachorro = new DaoCachorro();
 	List<Cachorro> listCachorro = new ArrayList<Cachorro>();
-
 
 	public TelaMenuCachorroControlador(JTextField opcaoRecebida, JFrame frameTelaMenuCachorro) {
 		super();
@@ -29,33 +30,32 @@ public class TelaMenuCachorroControlador implements ActionListener {
 		this.frameTelaMenuCachorro = frameTelaMenuCachorro;
 	}
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2")) {
-			switch (opcaoRecebida.getText()){
-			case "G1" : {
+			switch (opcaoRecebida.getText()) {
+			case "G1": {
 				cadastroCachorro.chamarTelaCadastroCachorro();
 				System.out.println("Direcione para cadastro de cachorros");
 				frameTelaMenuCachorro.setVisible(false);
 				break;
 			}
-			case "G2" : {
-				cadastroCachorro.imprimirCachorro(daoCachorro.retornaListaCachorros());
+			case "G2": {
+				//cadastroCachorro.imprimirCachorro(daoCachorro.retornaListaCachorros());
+				telaListaCachorro.listaCachorro(daoCachorro.retornaListaCachorros());
 				System.out.println("Direcione para lista de cachorros");
 				break;
 			}
-			case "3" :{
+			case "3": {
 				System.exit(0);
-				break;		
+				break;
 			}
-				
+
 			}
-		}else {
-			JOptionPane.showMessageDialog(null,"A opção " + opcaoRecebida.getText()+" não é válida");
+		} else {
+			JOptionPane.showMessageDialog(null, "A opção " + opcaoRecebida.getText() + " não é válida");
 		}
-		
+
 	}
-	
+
 }

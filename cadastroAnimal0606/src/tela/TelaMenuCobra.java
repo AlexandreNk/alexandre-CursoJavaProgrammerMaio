@@ -38,7 +38,7 @@ public class TelaMenuCobra {
 		frameTelaMenuCobra.add(panelTelaCobra);
 		frameTelaMenuCobra.setVisible(true);
 
-		TelaMenuCobraControlador telaMenuCobraControlador = new TelaMenuCobraControlador(opcaoTexto);
+		TelaMenuCobraControlador telaMenuCobraControlador = new TelaMenuCobraControlador(opcaoTexto,frameTelaMenuCobra);
 		botaoEnviar.addActionListener(telaMenuCobraControlador);
 
 		

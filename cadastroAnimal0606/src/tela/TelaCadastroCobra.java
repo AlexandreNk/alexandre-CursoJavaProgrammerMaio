@@ -54,7 +54,7 @@ public class TelaCadastroCobra {
 		frameTelaCadastroCobra.setVisible(true);
 
 		TelaCadastroCobraControlador cadastroCobraControlador = new TelaCadastroCobraControlador(
-				caixaTextoPrimeiroCampo, caixaTextoSegundoCampo, caixaTextoTerceiroCampo);
+				caixaTextoPrimeiroCampo, caixaTextoSegundoCampo, caixaTextoTerceiroCampo,frameTelaCadastroCobra);
 		botaoCadastrar.addActionListener(cadastroCobraControlador);
 	}
 
