@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 import entidade.Cobra;
 import gerenciaArquivo.ManipuladorArquivo;
-import persistencia.DaoCobra;
+import repositorio.CobraRepositorioImplementacao;
 
 public class TelaCadastroCobraControlador implements ActionListener {
 
@@ -19,7 +19,9 @@ public class TelaCadastroCobraControlador implements ActionListener {
 	JFrame frameTelaCadastroCobra;
 
 	ManipuladorArquivo manipuladorArquivo = new ManipuladorArquivo();
-	DaoCobra daoCobra = new DaoCobra();
+//	DaoCobra daoCobra = new DaoCobra();
+	CobraRepositorioImplementacao cobraRepositorioImplementacao = new CobraRepositorioImplementacao();
+	
 
 	public TelaCadastroCobraControlador(JTextField caixaTextoPrimeiroCampoRecebidoNome,
 			JTextField caixaTextoSegundoCampoRecebidoCaf, JTextField caixaTextoTerceiroCampoRecebidoCorPelo,
@@ -50,7 +52,7 @@ public class TelaCadastroCobraControlador implements ActionListener {
 		manipuladorArquivo.registrarCobra(cobra);
 		// daoCobra.salvarCobra(cobra);
 
-		if (daoCobra.salvarCobra(cobra)) {
+		if (cobraRepositorioImplementacao.salvarCobraRepositorio(cobra)) {
 			JOptionPane.showMessageDialog(null, "Salvou com sucesso!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Não salvou!");

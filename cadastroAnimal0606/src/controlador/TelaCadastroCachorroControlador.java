@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 import entidade.Cachorro;
 import gerenciaArquivo.ManipuladorArquivo;
-import persistencia.DaoCachorro;
+import repositorio.CachorroRepositorioImplementacao;
 
 public class TelaCadastroCachorroControlador implements ActionListener {
 
@@ -19,7 +19,9 @@ public class TelaCadastroCachorroControlador implements ActionListener {
 	JFrame frameTelaCadastroCachorro;
 
 	ManipuladorArquivo manipuladorArquivo = new ManipuladorArquivo();
-	DaoCachorro daoCachorro = new DaoCachorro();
+	//	DaoCachorro daoCachorro = new DaoCachorro();
+	CachorroRepositorioImplementacao cachorroRepositorioImp = new CachorroRepositorioImplementacao();
+
 
 	public TelaCadastroCachorroControlador(JTextField caixaTextoPrimeiroCampoRecebidoNome,
 			JTextField caixaTextoSegundoCampoRecebidoCaf, JTextField caixaTextoTerceiroCampoRecebidoCorPelo,
@@ -51,7 +53,7 @@ public class TelaCadastroCachorroControlador implements ActionListener {
 		manipuladorArquivo.registrarCachorro(cachorro);
 		// daoCachorro.salvarCachorro(cachorro);
 
-		if (daoCachorro.salvarCachorro(cachorro)) {
+		if (cachorroRepositorioImp.salvarCachorroRepositorio(cachorro)) {
 			JOptionPane.showMessageDialog(null, "Salvou com sucesso!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Não salvou!");

@@ -1,3 +1,3 @@
-O nome da cobra é: Jararaca
-O CAF da cobra é: 669
-O tipo do veneno é: veneno 2
+O nome da cobra é: Cobra verde
+O CAF da cobra é: 661
+O tipo do veneno é: não venenosa

@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Dimension;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -46,6 +47,8 @@ public class TelaListaCobra {
 
 		JScrollPane scrollPaneListaCobra = new JScrollPane(tabelaCobra);
 
+		scrollPaneListaCobra.setPreferredSize(new Dimension(400,160));
+		
 		JPanel panelListaCobra = new JPanel();
 
 		panelListaCobra.add(scrollPaneListaCobra);
