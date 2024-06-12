@@ -2,16 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import entidade.Cobra;
-import persistencia.DaoCobra;
+import repositorio.CobraRepositorioImplementacao;
 import tela.TelaCadastroCobra;
+import tela.TelaDeletarCobra;
 
 public class TelaMenuCobraControlador implements ActionListener {
 
@@ -20,9 +18,11 @@ public class TelaMenuCobraControlador implements ActionListener {
 
 	TelaCadastroCobra cadastroCobra = new TelaCadastroCobra();
 	TelaListaCobra telaListaCobra = new TelaListaCobra();
+	TelaDeletarCobra telaDeletarCobra = new TelaDeletarCobra();
 	
-	DaoCobra daoCobra = new DaoCobra();
-	List<Cobra> listCobra = new ArrayList<Cobra>();
+	CobraRepositorioImplementacao cobraRepositorio = new CobraRepositorioImplementacao();
+	//DaoCobra daoCobra = new DaoCobra();
+	//List<Cobra> listCobra = new ArrayList<Cobra>();
 
 	public TelaMenuCobraControlador(JTextField opcaoRecebida, JFrame frameTelaMenuCobra) {
 		super();
@@ -32,7 +32,7 @@ public class TelaMenuCobraControlador implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2")) {
+		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2") || opcaoRecebida.getText().equals("G3")) {
 			switch (opcaoRecebida.getText()) {
 			case "G1": {
 				cadastroCobra.chamarTelaCadastroCobra();
@@ -42,11 +42,16 @@ public class TelaMenuCobraControlador implements ActionListener {
 			}
 			case "G2": {
 				//cadastroCobra.imprimirCobra(daoCobra.retornaListaCobra());
-				telaListaCobra.listaCobra(daoCobra.retornaListaCobra());
+				telaListaCobra.listaCobra(cobraRepositorio.listarCobraRepositorio());
 				System.out.println("Direcione para lista de cobras");
 				break;
 			}
-			case "3": {
+			case "G3": {
+				telaDeletarCobra.chamarTelaDeletarCobra(cobraRepositorio.listarCobraRepositorio());
+				System.out.println("Direcione para deletar cobra");
+				break;
+			}
+			case "SAIR": {
 				System.exit(0);
 				break;
 			}

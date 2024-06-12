@@ -14,10 +14,10 @@ public class TelaMenuCachorro {
 	
 	public void chamarTelaMenuCachorro() {
 		
-		JFrame frameTelaMenuCachorro = new JFrame();
-		
 		GridLayout grid = new GridLayout(0,1);
 		
+		JFrame frameTelaMenuCachorro = new JFrame();
+				
 		frameTelaMenuCachorro.setSize(200,200);
 		
 		JPanel panelTelaCachorro = new JPanel();
@@ -27,6 +27,10 @@ public class TelaMenuCachorro {
 		
 		JLabel labelOpcaoListarCachorro = new JLabel(" G2 - Listar Cachorro ");
 		panelTelaCachorro.add(labelOpcaoListarCachorro);
+		
+		JLabel labelOpcaoDeletarCachorro = new JLabel(" G3 - Deletar Cachorro ");
+		panelTelaCachorro.add(labelOpcaoDeletarCachorro);
+
 		panelTelaCachorro.setLayout(grid);
 		
 		JTextField opcaoTexto = new JTextField(10);

@@ -14,10 +14,10 @@ public class TelaMenuCobra {
 	
 	public void chamarTelaMenuCobra() {
 		
-		JFrame frameTelaMenuCobra = new JFrame();
-		
 		GridLayout grid = new GridLayout(0,1);
 		
+		JFrame frameTelaMenuCobra = new JFrame();
+				
 		frameTelaMenuCobra.setSize(200,200);
 		
 		JPanel panelTelaCobra = new JPanel();
@@ -27,6 +27,10 @@ public class TelaMenuCobra {
 		
 		JLabel labelOpcaoListarCobra = new JLabel(" G2 - Listar Cobra ");
 		panelTelaCobra.add(labelOpcaoListarCobra);
+		
+		JLabel labelOpcaoDeletarCobra = new JLabel(" G3 - Deletar Cobra ");
+		panelTelaCobra.add(labelOpcaoDeletarCobra);
+		
 		panelTelaCobra.setLayout(grid);
 		
 		JTextField opcaoTexto = new JTextField(10);

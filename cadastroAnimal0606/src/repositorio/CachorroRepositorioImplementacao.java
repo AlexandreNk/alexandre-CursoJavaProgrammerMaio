@@ -14,8 +14,21 @@ public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 	}
 	
 	@Override
-	public List<Cachorro> listarGerenteRepositorio() {
+	public List<Cachorro> listarCachorroRepositorio() {
 		DaoCachorro daoCachorro = new DaoCachorro();
 		return daoCachorro.retornaListaCachorros();	
+	}
+
+	@Override
+	public boolean excluirCachorroRepositorio(String caf) {
+
+		DaoCachorro daoCachorro = new DaoCachorro();
+		
+		for (Cachorro cachorro:listarCachorroRepositorio()) {
+			if(cachorro.getCAF().equals(caf)) {
+				return daoCachorro.deletarCachorro(caf);
+			}
+		}
+		return false;
 	}
 }

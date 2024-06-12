@@ -8,6 +8,9 @@ public interface CachorroRepositorio {
 
 	public boolean salvarCachorroRepositorio(Cachorro cachorro);
 	
-	public List<Cachorro> listarGerenteRepositorio();
+	public List<Cachorro> listarCachorroRepositorio();
+	
+	public boolean excluirCachorroRepositorio(String caf);
+	
 }
 

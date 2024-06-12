@@ -18,4 +18,16 @@ public class CobraRepositorioImplementacao implements CobraRepositorio {
 		DaoCobra daoCobra = new DaoCobra();
 		return daoCobra.retornaListaCobra();
 	}
+
+	@Override
+	public boolean excluirCobraRepositorio(String caf) {
+		DaoCobra daoCobra = new DaoCobra();
+		
+		for (Cobra cobra:listarCobraRepositorio()) {
+			if(cobra.getCAF().equals(caf)) {
+				return daoCobra.deletarCobra(caf);
+			}
+		}
+		return false;
+	}
 }

@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.xdevapi.Result;
-
 import entidade.Cachorro;
 
 public class DaoCachorro {
@@ -27,8 +25,8 @@ public class DaoCachorro {
 																			// classe Fabrica de conexão
 
 			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlInsert);// Armazena a conexão e o
-																							// comando SQL que vai ser
-																							// preparado
+																					// comando SQL que vai ser
+																					// preparado
 
 			preparaOcomandoSQL.setString(1, cachorro.getNome());// Coloca o valor no campo cpf
 			preparaOcomandoSQL.setString(2, cachorro.getCAF()); // Colocar o valor no campo nome
@@ -48,7 +46,7 @@ public class DaoCachorro {
 			try {
 				if (connectionBase != null) {
 					connectionBase.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
-													// encerrar
+											// encerrar
 				}
 				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
 					preparaOcomandoSQL.close();
@@ -63,18 +61,17 @@ public class DaoCachorro {
 		return salvamento;
 
 	}
-	
-	public List<Cachorro> retornaListaCachorros(){
-		
+
+	public List<Cachorro> retornaListaCachorros() {
+
 		String comandoSqlBuscarCachorro = "select * from tb_cachorro";
-		
+
 		List<Cachorro> listaCachorro = new ArrayList<>();
 		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
 
 		Connection connectionBase = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
-		ResultSet resultadoTabelaCachorro =null;
-		
+		ResultSet resultadoTabelaCachorro = null;
 
 		try {
 			connectionBase = conexaoFabricaConexao.criarConexaoComBase(); // Recebe o objeto de conexão da
@@ -84,21 +81,69 @@ public class DaoCachorro {
 																							// comando SQL que vai ser
 																							// preparado
 			resultadoTabelaCachorro = preparaOcomandoSQL.executeQuery();
-			
+
 			while (resultadoTabelaCachorro.next()) {
 				Cachorro cachorro = new Cachorro();
-				
+
 				cachorro.setNome(resultadoTabelaCachorro.getString("nome"));
 				cachorro.setCAF(resultadoTabelaCachorro.getString("CAF"));
 				cachorro.setCorPelo(resultadoTabelaCachorro.getString("corPelo"));
-				
+
 				listaCachorro.add(cachorro);
-				
+
 			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println(" Erro na lista de cachorro!!!");
+
+		} finally { // Esse é obrigatorio
+			try {
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
+											// encerrar
+				}
+				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
+					preparaOcomandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return listaCachorro;
+	}
+
+	public boolean deletarCachorro(String caf) {
+
+		boolean deletar = false;
+
+		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
+		Connection connectionBase = null; // Cria o objeto de conexão como null
+		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
+
+		String comandoSqlDelete = "delete from tb_cachorro where caf = ?"; // Base do comando SQL
+
+		try {
+			connectionBase = conexaoFabricaConexao.criarConexaoComBase(); // Recebe o objeto de
+																					// conexão da class //
+																					// Fabrica de conexã
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlDelete);// Armazena a conexão e o
+																							// comando SQL que vai ser
+																							// prepara
+			preparaOcomandoSQL.setString(1, caf);// Coloca o valor no campo cpf
+
+			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
+
+			System.out.println("Gerente Deletado");// Log
+
+			deletar = true; // Se tudo funcionar certo
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(" Não foi possivel deletar o animal!!!");
 
 		} finally { // Esse é obrigatorio
 			try {
@@ -116,7 +161,8 @@ public class DaoCachorro {
 
 		}
 
-		return listaCachorro;
+		return deletar;
+
 	}
 
 }

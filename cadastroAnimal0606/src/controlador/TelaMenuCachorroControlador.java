@@ -2,16 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import entidade.Cachorro;
-import persistencia.DaoCachorro;
+import repositorio.CachorroRepositorioImplementacao;
 import tela.TelaCadastroCachorro;
+import tela.TelaDeletarCachorro;
 
 public class TelaMenuCachorroControlador implements ActionListener {
 
@@ -20,19 +18,21 @@ public class TelaMenuCachorroControlador implements ActionListener {
 
 	TelaCadastroCachorro cadastroCachorro = new TelaCadastroCachorro();
 	TelaListaCachorro telaListaCachorro = new TelaListaCachorro();
-	
-	DaoCachorro daoCachorro = new DaoCachorro();
-	List<Cachorro> listCachorro = new ArrayList<Cachorro>();
+	TelaDeletarCachorro telaDeletarCachorro = new TelaDeletarCachorro();
+
+	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
+
+	// DaoCachorro daoCachorro = new DaoCachorro();
+	// List<Cachorro> listCachorro = new ArrayList<Cachorro>();
 
 	public TelaMenuCachorroControlador(JTextField opcaoRecebida, JFrame frameTelaMenuCachorro) {
-		super();
 		this.opcaoRecebida = opcaoRecebida;
 		this.frameTelaMenuCachorro = frameTelaMenuCachorro;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2")) {
+		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2") || opcaoRecebida.getText().equals("G3")) {
 			switch (opcaoRecebida.getText()) {
 			case "G1": {
 				cadastroCachorro.chamarTelaCadastroCachorro();
@@ -41,12 +41,17 @@ public class TelaMenuCachorroControlador implements ActionListener {
 				break;
 			}
 			case "G2": {
-				//cadastroCachorro.imprimirCachorro(daoCachorro.retornaListaCachorros());
-				telaListaCachorro.listaCachorro(daoCachorro.retornaListaCachorros());
+				// cadastroCachorro.imprimirCachorro(daoCachorro.retornaListaCachorros());
+				telaListaCachorro.listaCachorro(cachorroRepositorio.listarCachorroRepositorio());
 				System.out.println("Direcione para lista de cachorros");
 				break;
 			}
-			case "3": {
+			case "G3": {
+				telaDeletarCachorro.chamarTelaDeletarCachorro(cachorroRepositorio.listarCachorroRepositorio());
+				System.out.println("Direcione para deletar cachorro");
+				break;
+			}
+			case "SAIR": {
 				System.exit(0);
 				break;
 			}

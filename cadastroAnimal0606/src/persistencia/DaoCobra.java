@@ -116,4 +116,52 @@ public class DaoCobra {
 		return listaCobra;
 	}
 
+	public boolean deletarCobra(String caf) {
+
+		boolean deletar = false;
+
+		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
+		Connection connectionBase = null; // Cria o objeto de conexão como null
+		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
+
+		String comandoSqlDelete = "delete from tb_cobra where caf = ?"; // Base do comando SQL
+
+		try {
+			connectionBase = conexaoFabricaConexao.criarConexaoComBase(); // Recebe o objeto de
+																					// conexão da class //
+																					// Fabrica de conexã
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlDelete);// Armazena a conexão e o
+																							// comando SQL que vai ser
+																							// prepara
+			preparaOcomandoSQL.setString(1, caf);// Coloca o valor no campo cpf
+
+			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
+
+			System.out.println("Gerente Deletado");// Log
+
+			deletar = true; // Se tudo funcionar certo
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(" Não foi possivel deletar o animal!!!");
+
+		} finally { // Esse é obrigatorio
+			try {
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
+													// encerrar
+				}
+				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
+					preparaOcomandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return deletar;
+
+	}
 }
