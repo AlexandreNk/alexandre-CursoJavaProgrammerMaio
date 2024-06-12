@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import repositorio.CobraRepositorioImplementacao;
 import tela.TelaCadastroCobra;
 import tela.TelaDeletarCobra;
+import tela.TelaSelecionarAlterarCobra;
 
 public class TelaMenuCobraControlador implements ActionListener {
 
@@ -19,20 +20,21 @@ public class TelaMenuCobraControlador implements ActionListener {
 	TelaCadastroCobra cadastroCobra = new TelaCadastroCobra();
 	TelaListaCobra telaListaCobra = new TelaListaCobra();
 	TelaDeletarCobra telaDeletarCobra = new TelaDeletarCobra();
+	TelaSelecionarAlterarCobra alterarSelecionarCobra = new TelaSelecionarAlterarCobra();
 	
 	CobraRepositorioImplementacao cobraRepositorio = new CobraRepositorioImplementacao();
+
 	//DaoCobra daoCobra = new DaoCobra();
 	//List<Cobra> listCobra = new ArrayList<Cobra>();
 
 	public TelaMenuCobraControlador(JTextField opcaoRecebida, JFrame frameTelaMenuCobra) {
-		super();
 		this.opcaoRecebida = opcaoRecebida;
 		this.frameTelaMenuCobra = frameTelaMenuCobra;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2") || opcaoRecebida.getText().equals("G3")) {
+		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2") || opcaoRecebida.getText().equals("G3")  || opcaoRecebida.getText().equals("G4")) {
 			switch (opcaoRecebida.getText()) {
 			case "G1": {
 				cadastroCobra.chamarTelaCadastroCobra();
@@ -49,6 +51,11 @@ public class TelaMenuCobraControlador implements ActionListener {
 			case "G3": {
 				telaDeletarCobra.chamarTelaDeletarCobra(cobraRepositorio.listarCobraRepositorio());
 				System.out.println("Direcione para deletar cobra");
+				break;
+			}
+			case "G4": {
+				alterarSelecionarCobra.chamarTelaDeletarCobra(cobraRepositorio.listarCobraRepositorio());
+				System.out.println("Direcione para alterar a cobra");
 				break;
 			}
 			case "SAIR": {

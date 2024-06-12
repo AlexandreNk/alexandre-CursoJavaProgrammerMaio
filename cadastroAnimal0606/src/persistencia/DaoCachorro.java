@@ -164,5 +164,56 @@ public class DaoCachorro {
 		return deletar;
 
 	}
+	
+	public boolean alterarCachorro(Cachorro cachorro) {
+
+		boolean salvamento = false;
+
+		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
+		Connection connectionBase = null; // Cria o objeto de conexão como null
+		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
+
+		String comandoSqlInsert = "UPDATE tb_cachorro SET nome = ?, corpelo = ? WHERE caf = ? "; // Base do comando
+																									// SQL
+
+		try {
+			connectionBase = conexaoFabricaConexao.criarConexaoComBase(); // Recebe o objeto de
+																								// conexão da classe																				// Fabrica de conexão
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlInsert);// Armazena a conexão e o																			// comando SQL que vai se																			// preparado
+			preparaOcomandoSQL.setString(1, cachorro.getNome());
+			preparaOcomandoSQL.setString(2, cachorro.getCorPelo()); // Colocar o valor no campo email
+			preparaOcomandoSQL.setString(3, cachorro.getCAF());// Coloca o valor no campo cpf
+			 // Colocar o valor no campo nome
+			
+
+			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
+
+			System.out.println("O cachorro foi registrada");// Log
+
+			salvamento = true; // Se tudo funcionar certo
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(" Não foi possivel salvar o animal!!!");
+
+		} finally { // Esse é obrigatorio
+			try {
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
+													// encerrar
+				}
+				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
+					preparaOcomandoSQL.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return salvamento;
+
+	}
 
 }

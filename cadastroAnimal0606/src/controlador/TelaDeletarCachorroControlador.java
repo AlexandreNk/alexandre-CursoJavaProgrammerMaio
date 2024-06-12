@@ -18,14 +18,10 @@ public class TelaDeletarCachorroControlador implements ActionListener	{
 	
 	TelaMenuCachorro telaMenuCachorro = new TelaMenuCachorro();
 	
-
 	public TelaDeletarCachorroControlador(TextField cafRecebido, JFrame frameDeletar) {
 		this.cafRecebido = cafRecebido;
 		this.frameDeletar = frameDeletar;
 	}
-
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

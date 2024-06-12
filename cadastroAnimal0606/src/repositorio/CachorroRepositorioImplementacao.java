@@ -31,4 +31,20 @@ public class CachorroRepositorioImplementacao implements CachorroRepositorio {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean alterarCachorroRepositorio(Cachorro cachorro) {
+		DaoCachorro daoCachorro = new DaoCachorro();
+		return daoCachorro.alterarCachorro(cachorro);
+	}
+
+	@Override
+	public Cachorro buscaCachorroPorCaf(String caf) {
+		for(Cachorro cachorro:listarCachorroRepositorio()) {
+			if(cachorro.getCAF().equals(caf)) {
+				return cachorro;
+			}
+		}
+		return null;
+	}
 }

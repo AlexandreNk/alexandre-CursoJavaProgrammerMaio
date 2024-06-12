@@ -16,12 +16,12 @@ public class TelaDeletarCobraControlador implements ActionListener{
 	JFrame frameDeletar;
 	CobraRepositorioImplementacao cobraRepositorioImplementacao = new CobraRepositorioImplementacao();
 	
+	TelaMenuCobra telaMenuCobra = new TelaMenuCobra();
+	
 	public TelaDeletarCobraControlador(TextField cafRecebido, JFrame frameDeletar) {
 		this.cafRecebido = cafRecebido;
 		this.frameDeletar = frameDeletar;
 	}
-
-	TelaMenuCobra telaMenuCobra = new TelaMenuCobra();
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

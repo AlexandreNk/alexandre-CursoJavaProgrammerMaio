@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import repositorio.CachorroRepositorioImplementacao;
 import tela.TelaCadastroCachorro;
 import tela.TelaDeletarCachorro;
+import tela.TelaSelecionarAlterarCachorro;
 
 public class TelaMenuCachorroControlador implements ActionListener {
 
@@ -19,7 +20,8 @@ public class TelaMenuCachorroControlador implements ActionListener {
 	TelaCadastroCachorro cadastroCachorro = new TelaCadastroCachorro();
 	TelaListaCachorro telaListaCachorro = new TelaListaCachorro();
 	TelaDeletarCachorro telaDeletarCachorro = new TelaDeletarCachorro();
-
+	TelaSelecionarAlterarCachorro alterarSelecionarCachorro = new TelaSelecionarAlterarCachorro();
+	
 	CachorroRepositorioImplementacao cachorroRepositorio = new CachorroRepositorioImplementacao();
 
 	// DaoCachorro daoCachorro = new DaoCachorro();
@@ -32,7 +34,7 @@ public class TelaMenuCachorroControlador implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2") || opcaoRecebida.getText().equals("G3")) {
+		if (opcaoRecebida.getText().equals("G1") || opcaoRecebida.getText().equals("G2") || opcaoRecebida.getText().equals("G3") || opcaoRecebida.getText().equals("G4")) {
 			switch (opcaoRecebida.getText()) {
 			case "G1": {
 				cadastroCachorro.chamarTelaCadastroCachorro();
@@ -49,6 +51,11 @@ public class TelaMenuCachorroControlador implements ActionListener {
 			case "G3": {
 				telaDeletarCachorro.chamarTelaDeletarCachorro(cachorroRepositorio.listarCachorroRepositorio());
 				System.out.println("Direcione para deletar cachorro");
+				break;
+			}
+			case "G4": {
+				alterarSelecionarCachorro.chamarTelaDeletarCachorro(cachorroRepositorio.listarCachorroRepositorio());
+				System.out.println("Direcione para alterar o cachorro");
 				break;
 			}
 			case "SAIR": {

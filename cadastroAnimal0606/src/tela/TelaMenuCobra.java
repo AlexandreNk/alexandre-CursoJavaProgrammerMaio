@@ -30,7 +30,10 @@ public class TelaMenuCobra {
 		
 		JLabel labelOpcaoDeletarCobra = new JLabel(" G3 - Deletar Cobra ");
 		panelTelaCobra.add(labelOpcaoDeletarCobra);
-		
+
+		JLabel labelOpcaoAlterarCobra = new JLabel(" G4 - Alterar Cobra ");
+		panelTelaCobra.add(labelOpcaoAlterarCobra);
+	
 		panelTelaCobra.setLayout(grid);
 		
 		JTextField opcaoTexto = new JTextField(10);

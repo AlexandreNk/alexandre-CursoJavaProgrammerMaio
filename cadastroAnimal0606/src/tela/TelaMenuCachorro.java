@@ -31,6 +31,10 @@ public class TelaMenuCachorro {
 		JLabel labelOpcaoDeletarCachorro = new JLabel(" G3 - Deletar Cachorro ");
 		panelTelaCachorro.add(labelOpcaoDeletarCachorro);
 
+		JLabel labelOpcaoAlterarCachorro = new JLabel(" G4 - Alterar Cachorro ");
+		panelTelaCachorro.add(labelOpcaoAlterarCachorro);
+
+
 		panelTelaCachorro.setLayout(grid);
 		
 		JTextField opcaoTexto = new JTextField(10);
