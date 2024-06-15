@@ -1,3 +1,3 @@
-O nome do cachorro é: Mag 10/05/2024
-O CAF do cachorro é: 10/06/2024
-A cor do pelo é: Branca
+O nome do cachorro é: DOG2
+O CAF do cachorro é: 222
+A cor do pelo é: PRETO
