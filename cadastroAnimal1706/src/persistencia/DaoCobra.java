@@ -17,7 +17,7 @@ public class DaoCobra {
 		Connection connectionBase = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
 
-		String comandoSqlInsert = "insert into tb_cobra (nome, caf, tipoveneno) values (?, ?, ?)"; // Base do comando
+		String comandoSqlInsert = "insert into tb_cobra (nome, caf, tipoveneno, preco, cep, localidade,logradouro, bairro,uf) values (?,?,?,?,?,?,?,?,?)"; // Base do comando
 																									// SQL
 
 		try {
@@ -32,6 +32,11 @@ public class DaoCobra {
 			preparaOcomandoSQL.setString(2, cobra.getCAF()); // Colocar o valor no campo nome
 			preparaOcomandoSQL.setString(3, cobra.getTipoVeneno()); // Colocar o valor no campo email
 			preparaOcomandoSQL.setString(4, cobra.getPreco().toString());
+			preparaOcomandoSQL.setString(5, cobra.getEndereco().getCep());
+			preparaOcomandoSQL.setString(6, cobra.getEndereco().getLocalidade());
+			preparaOcomandoSQL.setString(7, cobra.getEndereco().getLogradouro());
+			preparaOcomandoSQL.setString(8, cobra.getEndereco().getBairro());
+			preparaOcomandoSQL.setString(9, cobra.getEndereco().getUf());
 			
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 

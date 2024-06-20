@@ -24,12 +24,15 @@ public class TelaCadastroCachorro {
 		String segundoCampo = "Digite o CAF";
 		String terceiroCampo = "Digite a cor do pelo";
 		String quartoCampo = "Digite o peso";
+		String ceplabel = "Digite o CEP";
 
 		JFrame frameTelaCadastroCachorro = new JFrame();
 
 		frameTelaCadastroCachorro.setSize(200, 250);
 		JPanel panelTelaCadastroCachorro = new JPanel();
 
+		panelTelaCadastroCachorro.setLayout(grid);
+		
 		JLabel labelPrimeiroCampo = new JLabel(primeiroCampo);
 		panelTelaCadastroCachorro.add(labelPrimeiroCampo);
 
@@ -57,8 +60,12 @@ public class TelaCadastroCachorro {
 		JTextField caixaTextoQuartoCampo = new JTextField(10);
 		panelTelaCadastroCachorro.add(caixaTextoQuartoCampo);
 		
-		panelTelaCadastroCachorro.setLayout(grid);
+		JLabel jlabelCep = new JLabel(ceplabel);
+		panelTelaCadastroCachorro.add(jlabelCep);
 
+		JTextField caixaTextoCep = new JTextField(10);
+		panelTelaCadastroCachorro.add(caixaTextoCep);
+		
 		JButton botaoCadastrar = new JButton("Cadastrar Cachorro");
 		panelTelaCadastroCachorro.add(botaoCadastrar);
 
@@ -66,7 +73,7 @@ public class TelaCadastroCachorro {
 		frameTelaCadastroCachorro.setVisible(true);
 
 		TelaCadastroCachorroControlador cadastroCachorroControlador = new TelaCadastroCachorroControlador(
-				caixaTextoPrimeiroCampo, caixaTextoSegundoCampo, caixaSelecaoCor, frameTelaCadastroCachorro, caixaTextoQuartoCampo);
+				caixaTextoPrimeiroCampo, caixaTextoSegundoCampo, caixaSelecaoCor, frameTelaCadastroCachorro, caixaTextoQuartoCampo, caixaTextoCep);
 		botaoCadastrar.addActionListener(cadastroCachorroControlador);
 	}
 

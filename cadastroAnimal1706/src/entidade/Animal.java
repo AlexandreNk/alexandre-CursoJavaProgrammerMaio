@@ -4,7 +4,18 @@ public abstract class Animal {
 
 	private String nome;
 	private String CAF;// cpf do animal
-	private double Preco;
+	private Double Preco;
+	private Endereco endereco;
+	
+	
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getNome() {
 		return nome;

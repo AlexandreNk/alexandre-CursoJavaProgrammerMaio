@@ -24,12 +24,15 @@ public class TelaCadastroCobra {
 		String segundoCampo = "Digite o CAF";
 		String terceiroCampo = "Digite o tipo do veneno";
 		String quartoCampo = "Digite o peso";
+		String ceplabel = "Digite o CEP";
 
 		JFrame frameTelaCadastroCobra = new JFrame();
 
 		frameTelaCadastroCobra.setSize(200, 250);
 		JPanel panelTelaCadastroCobra = new JPanel();
 
+		panelTelaCadastroCobra.setLayout(grid);
+		
 		JLabel labelPrimeiroCampo = new JLabel(primeiroCampo);
 		panelTelaCadastroCobra.add(labelPrimeiroCampo);
 
@@ -50,11 +53,18 @@ public class TelaCadastroCobra {
 		JComboBox<CobraEnum> caixaSelecaoTipoVeneno = new JComboBox<>(CobraEnum.values());
 		panelTelaCadastroCobra.add(caixaSelecaoTipoVeneno);
 
-		JTextField caixaTextoQuartoCampo = new JTextField(10);
+		
 		JLabel labelQuartoCampo = new JLabel(quartoCampo);
 		panelTelaCadastroCobra.add(labelQuartoCampo);
 
-		panelTelaCadastroCobra.setLayout(grid);
+		JTextField caixaTextoQuartoCampo = new JTextField(10);
+		panelTelaCadastroCobra.add(caixaTextoQuartoCampo);
+		
+		JLabel jlabelCep = new JLabel(ceplabel);
+		panelTelaCadastroCobra.add(jlabelCep);
+
+		JTextField caixaTextoCep = new JTextField(10);
+		panelTelaCadastroCobra.add(caixaTextoCep);
 
 		JButton botaoCadastrar = new JButton("Cadastrar Cobra");
 		panelTelaCadastroCobra.add(botaoCadastrar);
@@ -63,7 +73,7 @@ public class TelaCadastroCobra {
 		frameTelaCadastroCobra.setVisible(true);
 
 		TelaCadastroCobraControlador cadastroCobraControlador = new TelaCadastroCobraControlador(
-				caixaTextoPrimeiroCampo, caixaTextoSegundoCampo, caixaSelecaoTipoVeneno, frameTelaCadastroCobra,caixaTextoQuartoCampo);
+				caixaTextoPrimeiroCampo, caixaTextoSegundoCampo, caixaSelecaoTipoVeneno, frameTelaCadastroCobra,caixaTextoQuartoCampo, caixaTextoCep);
 		botaoCadastrar.addActionListener(cadastroCobraControlador);
 	}
 
