@@ -15,7 +15,7 @@ public class TelaListaCachorro {
 		
 		int quantidadeLinhas = listaCachorro.size();
 		
-		String[][] tabelaString = new String [quantidadeLinhas][3];
+		String[][] tabelaString = new String [quantidadeLinhas][5];
 		
 		int posicaoColuna =0;
 		int posicaoLinha = 0;
@@ -29,12 +29,18 @@ public class TelaListaCachorro {
 			posicaoColuna ++;
 			
 			tabelaString[posicaoLinha][posicaoColuna]= cachorro.getCorPelo();
-			posicaoLinha ++;
+			posicaoColuna ++;
+
+			tabelaString[posicaoLinha][posicaoColuna]= cachorro.getPreco().toString();
+			posicaoColuna ++;
 			
+			tabelaString[posicaoLinha][posicaoColuna]= cachorro.getEndereco().getLogradouro();
+			posicaoLinha ++;
+
 			posicaoColuna= 0;
 		}
 		
-		String nomeColunas[] = {"Nome","CAF","CorPelo"};
+		String nomeColunas[] = {"Nome","CAF","CorPelo", "Preco", "Logradouro" };
 		
 		JFrame frameListaCachorro = new JFrame();
 		

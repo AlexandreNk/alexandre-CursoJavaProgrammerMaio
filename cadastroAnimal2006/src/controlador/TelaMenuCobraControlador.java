@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import repositorio.CobraRepositorioImplementacao;
 import tela.TelaCadastroCobra;
 import tela.TelaDeletarCobra;
+import tela.TelaListarCobra;
 import tela.TelaSelecionarAlterarCobra;
 
 public class TelaMenuCobraControlador implements ActionListener {
@@ -18,7 +19,7 @@ public class TelaMenuCobraControlador implements ActionListener {
 	JFrame frameTelaMenuCobra;
 
 	TelaCadastroCobra cadastroCobra = new TelaCadastroCobra();
-	TelaListaCobra telaListaCobra = new TelaListaCobra();
+	TelaListarCobra telaListarCobra = new TelaListarCobra();
 	TelaDeletarCobra telaDeletarCobra = new TelaDeletarCobra();
 	TelaSelecionarAlterarCobra alterarSelecionarCobra = new TelaSelecionarAlterarCobra();
 	
@@ -45,7 +46,7 @@ public class TelaMenuCobraControlador implements ActionListener {
 			case "G2": {
 				//cadastroCobra.imprimirCobra(daoCobra.retornaListaCobra());
 				frameTelaMenuCobra.setVisible(false);
-				telaListaCobra.listaCobra(cobraRepositorio.listarCobraRepositorio());
+				telaListarCobra.listarCobra(cobraRepositorio.listarCobraRepositorio());
 				System.out.println("Direcione para lista de cobras");
 				break;
 			}

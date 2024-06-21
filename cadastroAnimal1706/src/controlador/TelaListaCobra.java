@@ -35,7 +35,7 @@ public class TelaListaCobra {
 			posicaoColuna = 0;
 		}
 
-		String nomeColunas[] = { "Nome", "CAF", "TipoVeneno" };
+		String nomeColunas[] = { "Nome", "CAF", "TipoVeneno", "Preço", "CEP", "Localidade", "Logradouro", "Bairro", "UF" };
 
 		JFrame frameListaCobra = new JFrame();
 

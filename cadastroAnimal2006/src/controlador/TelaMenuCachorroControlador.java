@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import repositorio.CachorroRepositorioImplementacao;
 import tela.TelaCadastroCachorro;
 import tela.TelaDeletarCachorro;
+import tela.TelaListarCachorro;
 import tela.TelaSelecionarAlterarCachorro;
 
 public class TelaMenuCachorroControlador implements ActionListener {
@@ -18,7 +19,7 @@ public class TelaMenuCachorroControlador implements ActionListener {
 	JFrame frameTelaMenuCachorro;
 
 	TelaCadastroCachorro cadastroCachorro = new TelaCadastroCachorro();
-	TelaListaCachorro telaListaCachorro = new TelaListaCachorro();
+	TelaListarCachorro telaListarCachorro = new TelaListarCachorro();
 	TelaDeletarCachorro telaDeletarCachorro = new TelaDeletarCachorro();
 	TelaSelecionarAlterarCachorro alterarSelecionarCachorro = new TelaSelecionarAlterarCachorro();
 	
@@ -45,7 +46,7 @@ public class TelaMenuCachorroControlador implements ActionListener {
 			case "G2": {
 				// cadastroCachorro.imprimirCachorro(daoCachorro.retornaListaCachorros());
 				frameTelaMenuCachorro.setVisible(false);
-				telaListaCachorro.listaCachorro(cachorroRepositorio.listarCachorroRepositorio());
+				telaListarCachorro.listarCachorro(cachorroRepositorio.listarCachorroRepositorio());
 				System.out.println("Direcione para lista de cachorros");
 				break;
 			}
