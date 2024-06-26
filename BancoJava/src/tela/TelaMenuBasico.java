@@ -17,7 +17,7 @@ public class TelaMenuBasico {
 
 		JFrame frameTelaMenuBasico = new JFrame();// Instanciando um JFrame Vazio
 
-		frameTelaMenuBasico.setSize(200, 200); // Altura e largura
+		frameTelaMenuBasico.setSize(300, 250); // Altura e largura
 		JPanel panelTelaMenuBasico = new JPanel();// Cria o objeto painel
 
 		JLabel labelOpcaoCadastroBasico = new JLabel("B1 - CADASTRAR CORRENTISTA BASICO");// Cria a label 1

@@ -7,7 +7,7 @@ public class FabricaConexao {
 
 	private static String USUARIO = "root"; // O usuario do banco
 	private static String SENHA = "root"; // A senha do banco
-	private static String BANCO_URL = "jdbc:mysql://localhost:3306/cadastro_usuario?useTimezone=true&serverTimezone=UTC";// URL
+	private static String BANCO_URL = "jdbc:mysql://localhost:3306/bancojava?useTimezone=true&serverTimezone=UTC";// URL
 																															// DO
 																															// BANCO
 

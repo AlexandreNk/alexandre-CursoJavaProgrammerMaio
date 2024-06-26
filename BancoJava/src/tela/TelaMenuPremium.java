@@ -16,7 +16,7 @@ public class TelaMenuPremium {
 
 		JFrame frameTelaMenuPremium = new JFrame();// Instanciando um JFrame Vazio
 
-		frameTelaMenuPremium.setSize(200, 200); // Altura e largura
+		frameTelaMenuPremium.setSize(300, 250); // Altura e largura
 		JPanel panelTelaMenuPremium = new JPanel();// Cria o objeto painel
 
 		JLabel labelOpcaoCadastroPremium = new JLabel("P1 - CADASTRAR CORRENTISTA PREMIUM");// Cria a label 1

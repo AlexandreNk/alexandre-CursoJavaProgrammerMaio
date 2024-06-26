@@ -7,6 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import repositorio.BasicoRepositorioImplementacao;
+import tela.TelaCadastroBasico;
+import tela.TelaDeletarBasico;
+import tela.TelaListarBasico;
+import tela.TelaSelecionarAlterarBasico;
+
 public class TelaMenuBasicoControlador implements ActionListener {
 
 	JTextField opcao;
@@ -17,6 +23,12 @@ public class TelaMenuBasicoControlador implements ActionListener {
 		this.telaMenuBasico = telaMenuBasico;
 	}
 
+	TelaCadastroBasico telaCadastroBasico = new TelaCadastroBasico();
+	TelaListarBasico telaListarBasico = new TelaListarBasico();
+	TelaDeletarBasico telaBasico = new TelaDeletarBasico();
+	TelaSelecionarAlterarBasico telaAlterarBasico = new TelaSelecionarAlterarBasico();
+	BasicoRepositorioImplementacao basicoRepositorioImplementacao = new BasicoRepositorioImplementacao();
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (opcao.getText().equals("B1") || opcao.getText().equals("B2") || opcao.getText().equals("B3")
@@ -24,22 +36,22 @@ public class TelaMenuBasicoControlador implements ActionListener {
 			switch (opcao.getText()) {
 			case "B1": {
 				telaMenuBasico.setVisible(false);
-				//telaCadastroBasico.chamarTelaCadastroBasico();
+				telaCadastroBasico.chamarTelaCadastroBasico();
 				break;
 			}
 			case "B2": {
 				telaMenuBasico.setVisible(false);
-				//telaListarBasico.listarBasico(basicoRepositorioImplemetacao.listarBasicoRepositorio());
+				telaListarBasico.listarBasico(basicoRepositorioImplementacao.listarBasicoRepositorio());
 				break;
 			}
 			case "B3": {
 				telaMenuBasico.setVisible(false);
-				//telaBasico.deletarBasico(basicoRepositorioImplemetacao.listarBasicoRepositorio());
+				telaBasico.deletarBasico(basicoRepositorioImplementacao.listarBasicoRepositorio());
 				break;
 			}
 			case "B4": {
 				telaMenuBasico.setVisible(false);
-				//telaAlterarBasico.alterarBasico(basicoRepositorioImplemetacao.listarBasicoRepositorio());
+				telaAlterarBasico.alterarBasico(basicoRepositorioImplementacao.listarBasicoRepositorio());
 				break;
 			}
 			}

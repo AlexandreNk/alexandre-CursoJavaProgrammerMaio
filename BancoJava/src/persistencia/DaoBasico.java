@@ -16,27 +16,31 @@ public class DaoBasico {
 		boolean salvamento = false;
 
 		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
-		Connection connectionBaseExemplo = null; // Cria o objeto de conexão como null
+		Connection connectionBase = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
 
-		String comandoSqlInsert = "insert into tb_basico (cpf, nome, tipocliente, valoranuidade, limitecredito, limitesaque, cep, localidade,logradouro, bairro,uf) values (?,?,?,?,?,?,?,?,?,?,?)"; // Base
+		// String comandoSqlInsert = "insert into tb_correntista_basico (cpf, nome,
+		// tipocliente, valoranuidade, limitecredito, limitesaque, cep,
+		// localidade,logradouro, bairro,uf) values (?,?,?,?,?,?,?,?,?,?,?)"; // Base
+		String comandoSqlInsert = "insert into tb_correntista_basico (cpf, nome, valoranuidade, limitesaque, cep, localidade,logradouro, bairro,uf) values (?,?,?,?,?,?,?,?,?)"; // Base
 		// do
 		// comando
 		// SQL
 
 		try {
-			connectionBaseExemplo = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
-																								// conexão da classe
-																								// Fabrica de conexão
+			connectionBase = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
+																					// conexão da classe
+																					// Fabrica de conexão
 
-			preparaOcomandoSQL = connectionBaseExemplo.prepareStatement(comandoSqlInsert);// Armazena a conexão e o
-																							// comando SQL que vai ser
-																							// preparado
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlInsert);// Armazena a conexão e o
+																					// comando SQL que vai ser
+																					// preparado
 
 			preparaOcomandoSQL.setString(1, basico.getCpf());// Coloca o valor no campo cpf
 			preparaOcomandoSQL.setString(2, basico.getNome()); // Colocar o valor no campo nome
-			preparaOcomandoSQL.setString(3, basico.getTipoCliente());
-			preparaOcomandoSQL.setString(4, basico.getValorDaAnuidade().toString());
+			// preparaOcomandoSQL.setString(3, basico.getTipoCliente());
+			preparaOcomandoSQL.setString(3, basico.getValorDaAnuidade().toString());
+			preparaOcomandoSQL.setString(4, basico.getLimiteDeSaque().toString());
 			preparaOcomandoSQL.setString(5, basico.getEndereco().getCep());
 			preparaOcomandoSQL.setString(6, basico.getEndereco().getLocalidade());
 			preparaOcomandoSQL.setString(7, basico.getEndereco().getLogradouro());
@@ -45,19 +49,19 @@ public class DaoBasico {
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
-			System.out.println("A pessoa foi registrada");// Log
+			System.out.println("O correntista foi registrado");// Log
 
 			salvamento = true; // Se tudo funcionar certo
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println(" Não foi possivel salvar a basico!!!");
+			System.out.println(" Não foi possivel salvar correntista basico!!!");
 
 		} finally { // Esse é obrigatorio
 			try {
-				if (connectionBaseExemplo != null) {
-					connectionBaseExemplo.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
-													// encerrar
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBase estiver aberto essa linha vai
+											// encerrar
 				}
 				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
 					preparaOcomandoSQL.close();
@@ -73,23 +77,22 @@ public class DaoBasico {
 
 	}
 
-	
 	public List<Basico> retornaListaDeBasicos() {
 
-		String comandoSqlBuscarBasico = "select * from tb_basico";
+		String comandoSqlBuscarBasico = "select * from tb_correntista_basico";
 		List<Basico> listaBasico = new ArrayList<>();
 		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
 
-		Connection connectionBaseExemplo = null; // Cria o objeto de conexão como null
+		Connection connectionBase = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
 		ResultSet resultadoDaTabelaDoBanco = null;
 
 		try {
 
-			connectionBaseExemplo = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
-																							// conexão da classe
-																							// Fabrica de conexão
-			preparaOcomandoSQL = connectionBaseExemplo.prepareStatement(comandoSqlBuscarBasico);
+			connectionBase = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
+																					// conexão da classe
+																					// Fabrica de conexão
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlBuscarBasico);
 			resultadoDaTabelaDoBanco = preparaOcomandoSQL.executeQuery();
 
 			while (resultadoDaTabelaDoBanco.next()) {
@@ -100,8 +103,8 @@ public class DaoBasico {
 
 				basico.setNome(resultadoDaTabelaDoBanco.getString("nome"));
 				basico.setCpf(resultadoDaTabelaDoBanco.getString("cpf"));
-				basico.setGerencia(resultadoDaTabelaDoBanco.getString("gerencia"));
-				basico.setSalario(Double.parseDouble(resultadoDaTabelaDoBanco.getString("salario")));
+				basico.setLimiteDeSaque(Double.parseDouble(resultadoDaTabelaDoBanco.getString("limiteSaque")));
+				basico.setValorDaAnuidade(Double.parseDouble(resultadoDaTabelaDoBanco.getString("valorAnuidade")));
 				basico.getEndereco().setCep(resultadoDaTabelaDoBanco.getString("cep"));
 				basico.getEndereco().setBairro(resultadoDaTabelaDoBanco.getString("bairro"));
 				basico.getEndereco().setLogradouro(resultadoDaTabelaDoBanco.getString("logradouro"));
@@ -120,12 +123,12 @@ public class DaoBasico {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Erro ao buscar a lista de basicos");
+			System.out.println("Erro ao buscar a lista de correntistas basicos");
 		} finally { // Esse é obrigatorio
 			try {
-				if (connectionBaseExemplo != null) {
-					connectionBaseExemplo.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
-													// encerrar
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBase estiver aberto essa linha vai
+											// encerrar
 				}
 				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
 					preparaOcomandoSQL.close();
@@ -145,18 +148,18 @@ public class DaoBasico {
 		boolean deletar = false;
 
 		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
-		Connection connectionBaseExemplo = null; // Cria o objeto de conexão como null
+		Connection connectionBase = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
 
-		String comandoSqlDelete = "delete from tb_basico where cpf = ?"; // Base do comando SQL
+		String comandoSqlDelete = "delete from tb_correntista_basico where cpf = ?"; // Base do comando SQL
 
 		try {
-			connectionBaseExemplo = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
-																							// conexão da class //
-																							// Fabrica de conexã
-			preparaOcomandoSQL = connectionBaseExemplo.prepareStatement(comandoSqlDelete);// Armazena a conexão e o
-																							// comando SQL que vai ser
-																							// prepara
+			connectionBase = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
+																					// conexão da class //
+																					// Fabrica de conexã
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlDelete);// Armazena a conexão e o
+																					// comando SQL que vai ser
+																					// prepara
 			preparaOcomandoSQL.setString(1, cpf);// Coloca o valor no campo cpf
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
@@ -167,13 +170,13 @@ public class DaoBasico {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println(" Não foi possivel deletar o pessoa!!!");
+			System.out.println(" Não foi possivel deletar o correntista basico!!!");
 
 		} finally { // Esse é obrigatorio
 			try {
-				if (connectionBaseExemplo != null) {
-					connectionBaseExemplo.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
-													// encerrar
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBase estiver aberto essa linha vai
+											// encerrar
 				}
 				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
 					preparaOcomandoSQL.close();
@@ -194,21 +197,23 @@ public class DaoBasico {
 		boolean salvamento = false;
 
 		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
-		Connection connectionBaseExemplo = null; // Cria o objeto de conexão como null
+		Connection connectionBase = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
 
-		String comandoSqlInsert = "UPDATE tb_basico SET nome = ?, gerencia = ? WHERE cpf = ? "; // Base do comando
-																										// SQL
+		String comandoSqlInsert = "UPDATE tb_correntista_basico SET nome = ?, limitesaque = ? WHERE cpf = ? "; // Base
+																												// do
+																												// comando
+		// SQL
 
 		try {
-			connectionBaseExemplo = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
-																							// conexão da classe //
-																							// Fabrica de conexão
-			preparaOcomandoSQL = connectionBaseExemplo.prepareStatement(comandoSqlInsert);// Armazena a conexão e o //
-																							// comando SQL que vai se //
-																							// preparado
+			connectionBase = conexaoFabricaConexao.criarConexaoComBaseBancoJava(); // Recebe o objeto de
+																					// conexão da classe //
+																					// Fabrica de conexão
+			preparaOcomandoSQL = connectionBase.prepareStatement(comandoSqlInsert);// Armazena a conexão e o //
+																					// comando SQL que vai se //
+																					// preparado
 			preparaOcomandoSQL.setString(1, basico.getNome());
-			preparaOcomandoSQL.setString(2, basico.getGerencia()); // Colocar o valor no campo email
+			preparaOcomandoSQL.setString(2, basico.getLimiteDeSaque().toString()); // Colocar o valor no campo email
 			preparaOcomandoSQL.setString(3, basico.getCpf());// Coloca o valor no campo cpf
 			// Colocar o valor no campo nome
 
@@ -220,13 +225,13 @@ public class DaoBasico {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println(" Não foi possivel salvar a pessoa!!!");
+			System.out.println(" Não foi possivel salvar a correntista basico!!!");
 
 		} finally { // Esse é obrigatorio
 			try {
-				if (connectionBaseExemplo != null) {
-					connectionBaseExemplo.close();// Se objeto connectionBaseExemplo estiver aberto essa linha vai
-													// encerrar
+				if (connectionBase != null) {
+					connectionBase.close();// Se objeto connectionBase estiver aberto essa linha vai
+											// encerrar
 				}
 				if (preparaOcomandoSQL != null) {// Se objeto preparaOcomandoSQL estiver aberto essa linha vai encerrar
 					preparaOcomandoSQL.close();
