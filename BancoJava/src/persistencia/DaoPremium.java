@@ -49,13 +49,13 @@ public class DaoPremium {
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
-			System.out.println("A pessoa foi registrada");// Log
+			System.out.println("O correntista premium foi registrada");// Log
 
 			salvamento = true; // Se tudo funcionar certo
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println(" Não foi possivel salvar a premium!!!");
+			System.out.println(" Não foi possivel salvar o correntista premium!!!");
 
 		} finally { // Esse é obrigatorio
 			try {
@@ -170,7 +170,7 @@ public class DaoPremium {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println(" Não foi possivel deletar o pessoa!!!");
+			System.out.println(" Não foi possivel deletar o correntista premium!!!");
 
 		} finally { // Esse é obrigatorio
 			try {
@@ -219,13 +219,13 @@ public class DaoPremium {
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
-			System.out.println("O Correntista foi registrado");// Log
+			System.out.println("O Correntista premium foi registrado");// Log
 
 			salvamento = true; // Se tudo funcionar certo
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println(" Não foi possivel salvar o correntista!!!");
+			System.out.println(" Não foi possivel salvar o correntista premium!!!");
 
 		} finally { // Esse é obrigatorio
 			try {

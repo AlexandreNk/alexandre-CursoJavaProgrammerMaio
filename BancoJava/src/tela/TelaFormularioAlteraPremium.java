@@ -57,7 +57,7 @@ public class TelaFormularioAlteraPremium {
 		frameTelaCadastroPremium.setVisible(true);
 
 		TelaFormularioAlteraPremiumControlador alteraPremiumControlador = new TelaFormularioAlteraPremiumControlador(
-				caixaTextoPrimeiroCampo, quintoCampo, caixaTextoPrimeiroCampo, frameTelaCadastroPremium);
+				caixaTextoPrimeiroCampo, premium.getCpf(), caixaTextoQuintoCampo, frameTelaCadastroPremium);
 		botaoAlterar.addActionListener(alteraPremiumControlador);
 
 	}

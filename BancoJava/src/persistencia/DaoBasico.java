@@ -49,7 +49,7 @@ public class DaoBasico {
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
-			System.out.println("O correntista foi registrado");// Log
+			System.out.println("O correntista baisco foi registrado");// Log
 
 			salvamento = true; // Se tudo funcionar certo
 
@@ -123,6 +123,7 @@ public class DaoBasico {
 			}
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			System.out.println("Erro ao buscar a lista de correntistas basicos");
 		} finally { // Esse é obrigatorio
 			try {
@@ -219,7 +220,7 @@ public class DaoBasico {
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
-			System.out.println("A pessoa foi registrada");// Log
+			System.out.println("O correntista basico foi alterado");// Log
 
 			salvamento = true; // Se tudo funcionar certo
 

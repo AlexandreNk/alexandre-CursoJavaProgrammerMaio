@@ -57,7 +57,7 @@ public class TelaFormularioAlteraBasico {
 		frameTelaCadastroBasico.setVisible(true);
 
 		TelaFormularioAlteraBasicoControlador alteraBasicoControlador = new TelaFormularioAlteraBasicoControlador(
-				caixaTextoPrimeiroCampo, quintoCampo, caixaTextoPrimeiroCampo, frameTelaCadastroBasico);
+				caixaTextoPrimeiroCampo, basico.getCpf(), caixaTextoQuintoCampo, frameTelaCadastroBasico);
 		botaoAlterar.addActionListener(alteraBasicoControlador);
 
 	}

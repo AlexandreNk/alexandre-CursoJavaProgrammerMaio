@@ -32,7 +32,7 @@ public class TelaSelecionarAlterarPremiumControlador implements ActionListener {
 
 		if (e.getActionCommand().equals("ALTERAR")) {
 
-			System.out.println("ir para alterar");
+			System.out.println("ir para alterar correntista premium");
 			Premium premium = premiumRepositorioImplementacao.buscaPremiumPorCpf(cpf.getText());
 
 			if (premium != null) {

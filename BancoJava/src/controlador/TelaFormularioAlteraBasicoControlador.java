@@ -13,18 +13,17 @@ import tela.TelaMenuBasico;
 
 public class TelaFormularioAlteraBasicoControlador implements ActionListener {
 
-	JTextField caixaTextoPrimeiroCampoRecebidoNome;
-	String caixaTextoSegundoCampoRecebidoCpf;
-	// JTextField caixaTextoTerceiroCampoRecebidoGerencia;
-	JTextField caixaTextoQuintoCampoRecebidoLimiteSaque;
+	JTextField Nome;
+	String Cpf;
+	JTextField LimiteSaque;
 	JFrame frameTelaAlterarBasico;
 
-	public TelaFormularioAlteraBasicoControlador(JTextField caixaTextoPrimeiroCampoRecebidoNome,
-			String caixaTextoSegundoCampoRecebidoCpf, JTextField caixaTextoQuintoCampoRecebidoLimiteSaque,
+	
+	public TelaFormularioAlteraBasicoControlador(JTextField nome, String cpf, JTextField limiteSaque,
 			JFrame frameTelaAlterarBasico) {
-		this.caixaTextoPrimeiroCampoRecebidoNome = caixaTextoPrimeiroCampoRecebidoNome;
-		this.caixaTextoSegundoCampoRecebidoCpf = caixaTextoSegundoCampoRecebidoCpf;
-		this.caixaTextoQuintoCampoRecebidoLimiteSaque = caixaTextoQuintoCampoRecebidoLimiteSaque;
+		this.Nome = nome;
+		this.Cpf = cpf;
+		this.LimiteSaque = limiteSaque;
 		this.frameTelaAlterarBasico = frameTelaAlterarBasico;
 	}
 
@@ -39,12 +38,13 @@ public class TelaFormularioAlteraBasicoControlador implements ActionListener {
 
 	public void alterarBasicoNoBanco() {
 		Basico basico = new Basico();
-		basico.setNome(caixaTextoPrimeiroCampoRecebidoNome.getText());
-		basico.setLimiteDeSaque(Double.parseDouble(caixaTextoQuintoCampoRecebidoLimiteSaque.getText()));
-		//basico.setCpf(caixaTextoSegundoCampoRecebidoCpf);
+		basico.setCpf(Cpf);
+		basico.setNome(Nome.getText());
+		basico.setLimiteDeSaque(Double.parseDouble(LimiteSaque.getText()));
 
 		if (basicoRepositorioImplementacao.alterarBasicoRepositorio(basico)) {
 			JOptionPane.showMessageDialog(null, "Alterou com sucesso");
+			JOptionPane.showMessageDialog(null, "O Correntista Basico" + basico.getNome() + " Foi Alterado");
 			frameTelaAlterarBasico.setVisible(false);
 			telaMenuBasico.chamarTelaMenuBasico();
 		} else {

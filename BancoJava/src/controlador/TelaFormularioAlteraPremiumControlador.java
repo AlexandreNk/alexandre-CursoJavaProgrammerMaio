@@ -12,18 +12,18 @@ import repositorio.PremiumRepositorioImplementacao;
 import tela.TelaMenuPremium;
 
 public class TelaFormularioAlteraPremiumControlador implements ActionListener {
-	JTextField caixaTextoPrimeiroCampoRecebidoNome;
-	String caixaTextoSegundoCampoRecebidoCpf;
-	// JTextField caixaTextoTerceiroCampoRecebidoGerencia;
-	JTextField caixaTextoQuintoCampoRecebidoLimiteCredito;
+
+	JTextField Nome;
+	String Cpf;
+	JTextField LimiteCredito;
 	JFrame frameTelaAlterarPremium;
 
-	public TelaFormularioAlteraPremiumControlador(JTextField caixaTextoPrimeiroCampoRecebidoNome,
-			String caixaTextoSegundoCampoRecebidoCpf, JTextField caixaTextoQuintoCampoRecebidoLimiteCredito,
+	public TelaFormularioAlteraPremiumControlador(JTextField nome, String cpf, JTextField limiteCredito,
 			JFrame frameTelaAlterarPremium) {
-		this.caixaTextoPrimeiroCampoRecebidoNome = caixaTextoPrimeiroCampoRecebidoNome;
-		this.caixaTextoSegundoCampoRecebidoCpf = caixaTextoSegundoCampoRecebidoCpf;
-		this.caixaTextoQuintoCampoRecebidoLimiteCredito = caixaTextoQuintoCampoRecebidoLimiteCredito;
+		super();
+		Nome = nome;
+		Cpf = cpf;
+		LimiteCredito = limiteCredito;
 		this.frameTelaAlterarPremium = frameTelaAlterarPremium;
 	}
 
@@ -38,16 +38,16 @@ public class TelaFormularioAlteraPremiumControlador implements ActionListener {
 
 	public void alterarPremiumNoBanco() {
 		Premium premium = new Premium();
-		premium.setNome(caixaTextoPrimeiroCampoRecebidoNome.getText());
-		premium.setLimiteCredito(Double.parseDouble(caixaTextoQuintoCampoRecebidoLimiteCredito.getText()));
-		// premium.setCpf(caixaTextoSegundoCampoRecebidoCpf);
+		premium.setCpf(Cpf);
+		premium.setNome(Nome.getText());
+		premium.setLimiteCredito(Double.parseDouble(LimiteCredito.getText()));
 
 		if (premiumRepositorioImplementacao.alterarPremiumRepositorio(premium)) {
-			JOptionPane.showMessageDialog(null, "Alterou com sucesso");
+			JOptionPane.showMessageDialog(null, "Correntista Premium alterou com sucesso");
 			frameTelaAlterarPremium.setVisible(false);
 			telaMenuPremium.chamarTelaMenuPremium();
 		} else {
-			JOptionPane.showMessageDialog(null, "Não Alterou com sucesso");
+			JOptionPane.showMessageDialog(null, "Correntista Premium não Alterou com sucesso");
 
 		}
 	}
